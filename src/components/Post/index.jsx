@@ -16,7 +16,7 @@ const usePost = () => {
   };
 };
 
-export const Posts = () => {
+export const Post = () => {
   const { data, error, isLoading, isEmpty } = usePost();
 
   if (isLoading) {
