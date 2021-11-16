@@ -1,12 +1,12 @@
-import styles from "../styles/Home.module.css";
+import { Layout } from "../components/Layout";
 
 const index = () => {
   return (
-    <div className={styles.container}>
+    <Layout>
       <titile>Index</titile>
       <h1>NextJsで学ぶReact講座</h1>
       <p>json place folder</p>
-    </div>
+    </Layout>
   );
 };
 

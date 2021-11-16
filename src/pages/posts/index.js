@@ -1,16 +1,16 @@
 import Head from "next/head";
+import { Layout } from "../../components/Layout";
 import { Posts as PostsComponents } from "../../components/Posts";
-import styles from "../../styles/Home.module.css";
 
 const Posts = () => {
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
         <title>Posts page</title>
       </Head>
       <PostsComponents />
-    </div>
+    </Layout>
   );
 };
 
-export default Home;
+export default Posts;
