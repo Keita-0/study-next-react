@@ -1,24 +1,8 @@
-import { useCallback, useEffect, useState, useReducer } from "react";
-import useSWR from "swr";
 import Link from "next/link";
-import { fetcher } from "../../utils/fetcher";
-
-const usePost = () => {
-  const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/posts",
-    fetcher
-  );
-  console.log(error);
-  return {
-    data,
-    error,
-    isLoading: !error && !data,
-    isEmpty: data && data.length === 0,
-  };
-};
+import { usePosts } from "../hooks/useFetchArray";
 
 export const Posts = () => {
-  const { data, error, isLoading, isEmpty } = usePost();
+  const { data, error, isLoading, isEmpty } = usePosts();
 
   if (isLoading) {
     return <div>loading中です。</div>;

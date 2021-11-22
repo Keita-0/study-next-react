@@ -1,22 +1,8 @@
-import useSWR from "swr";
 import Link from "next/link";
-import { fetcher } from "../../utils/fetcher";
-
-const useUser = () => {
-  const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/users",
-    fetcher
-  );
-  return {
-    data,
-    error,
-    isLoading: !error && !data,
-    isEmpty: data && data.length === 0,
-  };
-};
+import { useUsers } from "../hooks/useFetchArray";
 
 export const Users = () => {
-  const { data, error, isLoading, isEmpty } = useUser();
+  const { data, error, isLoading, isEmpty } = useUsers();
 
   if (isLoading) {
     return <div>loading中です。</div>;

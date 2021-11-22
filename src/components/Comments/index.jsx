@@ -1,22 +1,8 @@
-import useSWR from "swr";
 import Link from "next/link";
-import { fetcher } from "../../utils/fetcher";
-
-const useComment = () => {
-  const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/comments",
-    fetcher
-  );
-  return {
-    data,
-    error,
-    isLoading: !error && !data,
-    isEmpty: data && data.length === 0,
-  };
-};
+import { useComments } from "../hooks/useFetchArray";
 
 export const Comments = () => {
-  const { data, error, isLoading, isEmpty } = useComment();
+  const { data, error, isLoading, isEmpty } = useComments();
 
   if (isLoading) {
     return <div>loading中です。</div>;
