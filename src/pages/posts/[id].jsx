@@ -1,12 +1,11 @@
 import Head from "next/head";
 import { usePost } from "../../components/hooks/usePost";
-import { Layout } from "../../components/Layout";
 
 const PostId = () => {
   const { post, user, error, isLoading } = usePost();
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{post?.title}</title>
       </Head>
@@ -15,7 +14,7 @@ const PostId = () => {
         <p>{post?.body}</p>
         <div>{user?.name}</div>
       </div>
-    </Layout>
+    </>
   );
 };
 

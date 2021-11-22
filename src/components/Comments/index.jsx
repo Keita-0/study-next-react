@@ -1,14 +1,12 @@
-import { useCallback, useEffect, useState, useReducer } from "react";
 import useSWR from "swr";
 import Link from "next/link";
 import { fetcher } from "../../utils/fetcher";
 
-const usePost = () => {
+const useComment = () => {
   const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/posts",
+    "https://jsonplaceholder.typicode.com/comments",
     fetcher
   );
-  console.log(error);
   return {
     data,
     error,
@@ -17,8 +15,8 @@ const usePost = () => {
   };
 };
 
-export const Posts = () => {
-  const { data, error, isLoading, isEmpty } = usePost();
+export const Comments = () => {
+  const { data, error, isLoading, isEmpty } = useComment();
 
   if (isLoading) {
     return <div>loading中です。</div>;
@@ -34,11 +32,11 @@ export const Posts = () => {
 
   return (
     <ol>
-      {data.map((post) => {
+      {data.map((commnent) => {
         return (
-          <li key={post.id}>
-            <Link href={`/posts/${post.id}`}>
-              <a>{post.title}</a>
+          <li key={commnent.id}>
+            <Link href={`/comments/${commnent.id}`}>
+              <a>{commnent.name}</a>
             </Link>
           </li>
         );
