@@ -4,12 +4,10 @@ import { Posts as PostsComponents } from "../../components/Posts";
 
 const Posts = () => {
   return (
-    <Layout>
-      <Head>
-        <title>Posts page</title>
-      </Head>
+    <>
+      <title>Posts page</title>
       <PostsComponents />
-    </Layout>
+    </>
   );
 };
 

@@ -1,6 +1,4 @@
-import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
-import useSWR from "swr";
 import { usePost } from "../../components/hooks/usePost";
 import { Layout } from "../../components/Layout";
 
