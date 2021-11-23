@@ -1,25 +1,18 @@
-import { useCallback, useEffect, useState, useReducer } from "react";
 import useSWR from "swr";
 import Link from "next/link";
 import { fetcher } from "../../utils/fetcher";
-
-const usePost = () => {
-  const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/posts",
-    fetcher
-  );
-  return {
-    data,
-    error,
-    isLoading: !error && !data,
-    isEmpty: data && data.length === 0,
-  };
-};
+import { useRouter } from "next/dist/client/router";
 
 export const Post = () => {
-  const { data, error, isLoading, isEmpty } = usePost();
+  const router = useRouter();
+  const { data, error } = useSWR(
+    router.query.id
+      ? `https://jsonplaceholder.typicode.com/posts/${router.query.id}`
+      : null,
+    fetcher
+  );
 
-  if (isLoading) {
+  if (!data && !error) {
     return <div>loading中です。</div>;
   }
 
@@ -27,7 +20,7 @@ export const Post = () => {
     return <div>{error.message}</div>;
   }
 
-  if (isEmpty) {
+  if (data && data.length === 0) {
     return <div>No Data!!</div>;
   }
 
