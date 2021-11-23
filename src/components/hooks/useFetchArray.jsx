@@ -28,3 +28,15 @@ export const useCommentsByPostsId = (id) => {
     id ? `https://jsonplaceholder.typicode.com/comments?postId=${id}` : null
   );
 };
+
+export const usePostsByUserId = (id) => {
+  return useFetchArray(
+    id ? `https://jsonplaceholder.typicode.com/posts?userId=${id}` : null
+  );
+};
+
+export const usePostsByPostId = (id) => {
+  return useFetchArray(
+    id ? `https://jsonplaceholder.typicode.com/posts?postId=${id}` : null
+  );
+};

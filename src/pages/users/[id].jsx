@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useUser } from "../../components/hooks/useUser";
+import { PostsByUserId } from "../../components/Posts/PostsByUserId";
 
 const UserId = () => {
   const { user, error, isLoading } = useUser();
@@ -10,9 +11,14 @@ const UserId = () => {
         <title>{user?.name}</title>
       </Head>
       <div>
-        <h1>{user?.name}</h1>
+        <h2>Detail</h2>
+        <p>{user?.name}</p>
         <p>{user?.email}</p>
-        <div>{user?.phone}</div>
+        <p>{user?.phone}</p>
+      </div>
+      <div>
+        <h2>Posts</h2>
+        <PostsByUserId id={user?.id} />
       </div>
     </>
   );
